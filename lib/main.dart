@@ -12,7 +12,7 @@ void test(){
   names.add("Bob");
   names.forEach(print);
 
-  var Set<String> uniqueNames = names.toSet();
+  var uniqueNames = names.toSet();
 
   var map = <String, int>{
     "Bob": 1,
@@ -28,6 +28,34 @@ void test(){
 
 }
 
+void nulls(){
+  String? name = null;
+  print(name);
+  name = 'Bob';
+  print(name);
+
+  List<String?> names = ['John', null, 'Alice', null, 'Bob'];
+  names.forEach((name) {
+    if(name != null){
+      print(name);
+    }
+  });
+
+  // Operator ??
+  String? firstName = null;
+  String lastName = 'Doe';
+  String fullName = firstName ?? 'John' + ' ' + lastName;
+
+  // Operator ??=
+  String? middleName = null;
+  middleName ??= 'Doe';
+  // if the value is null, it will be assigned 'Doe'
+
+  // Operator ?.
+  String? middleName2 = null;
+  print(middleName2?.length);
+
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -35,6 +63,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     test();
+    nulls();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
